@@ -1,0 +1,221 @@
+/* Fondo degradado */
+.login-bg {
+  --background: linear-gradient(135deg, #d0e7ff 0%, #f0fbff 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Card centrada */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  background: #ffffffdd;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  margin: 0 auto;
+}
+
+/* Título */
+.login-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+.input-item {
+  --background: #fdfdfd;
+  --color: #2c3e50;
+  --highlight-color-focused: #5dade2;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+ion-label,
+ion-input {
+  color: #2c3e50;
+}
+
+/* Botones principales */
+.btn-main {
+  --background: #5dade2;
+  --color: #000000;
+  --border-radius: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.btn-main-outline {
+  --border-color: #5dade2;
+  --color: #5dade2;
+  --border-radius: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Botones de idioma */
+.language-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.flag-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #5dade2;
+  background-color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  padding: 0;
+}
+
+.flag-btn img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.flag-btn:hover {
+  transform: scale(1.1);
+}
+
+.flag-btn.active {
+  background-color: #5dade2;
+  transform: scale(1.1);
+}
+
+/* Texto de idioma actual */
+.current-lang {
+  font-size: 0.9rem;
+  color: #2c3e50;
+  margin-left: 10px;
+  text-align: center;
+}
+
+/* Spinner centrado sobre toda la pantalla */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner-overlay ion-spinner {
+  width: 60px;
+  height: 60px;
+  --color: #5dade2;
+}
+
+.spinner-overlay p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  ion-col {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .login-card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+
+  .flag-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .flag-btn img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .current-lang {
+    font-size: 0.8rem;
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  ion-col {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .login-card {
+    padding: 15px;
+  }
+
+  .login-title {
+    font-size: 1.3rem;
+  }
+
+  .flag-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .flag-btn img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+ion-menu {
+  --background: #ffffff; 
+}
+
+ion-menu ion-content {
+  --background: #ffffff;
+  color: #2c3e50; 
+}
+
+ion-menu ion-item {
+  --background: transparent;
+  --color: #2c3e50;
+  font-weight: 500;
+}
+
+ion-menu ion-item ion-icon {
+  color: #5dade2; 
+  margin-right: 8px;
+}
+
+ion-menu ion-item:hover {
+  background: rgba(93, 173, 226, 0.1); 
+}

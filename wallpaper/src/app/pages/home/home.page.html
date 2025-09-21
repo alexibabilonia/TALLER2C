@@ -1,0 +1,80 @@
+<ion-content class="home-bg">
+  <ion-grid>
+    <!-- Header -->
+    <ion-row>
+      <ion-col size="12">
+        <h1 class="home-title">{{ t('HOME.TITLE') || 'Mis Wallpapers' }}</h1>
+      </ion-col>
+    </ion-row>
+
+    <!-- Wallpapers -->
+    <ion-row>
+      <ion-col size="12">
+        <div class="wallpaper-grid">
+          <!-- Si no hay wallpapers -->
+          <p *ngIf="wallpapers.length === 0" class="empty-text">
+            {{ t('HOME.EMPTY') || 'No hay wallpapers aún' }}
+          </p>
+
+          <!-- Mostrar wallpapers -->
+          <ng-container *ngFor="let wallpaper of wallpapers">
+            <ion-card
+              class="wallpaper-card"
+              [class.selected]="selectedWallpaper === wallpaper"
+              (click)="selectWallpaper(wallpaper)"
+            >
+              <img [src]="wallpaper" />
+            </ion-card>
+          </ng-container>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Botón flotante -->
+  <div class="fab-container">
+    <button class="fab-main" (click)="toggleMenu()">+</button>
+    <div class="fab-menu" [class.open]="menuOpen">
+      <button
+        class="fab-btn"
+        routerLink="/update-user-info"
+        title="{{ t('HOME.UPDATE') || 'Actualizar Datos' }}"
+      >
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </button>
+      <button
+        class="fab-btn"
+        (click)="addWallpaper()"
+        title="{{ t('HOME.ADD') || 'Agregar Wallpaper' }}"
+      >
+        <ion-icon name="images-outline"></ion-icon>
+      </button>
+      <button
+        class="fab-btn"
+        (click)="logout()"
+        title="{{ t('HOME.LOGOUT') || 'Cerrar Sesión' }}"
+      >
+        <ion-icon name="log-out-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú contextual de wallpaper seleccionado -->
+  <div *ngIf="selectedWallpaper" class="selection-menu">
+    <button (click)="applyWallpaper(selectedWallpaper, 1)">
+      {{ t('HOME.APPLY_HOME') || 'Aplicar Home' }}
+    </button>
+    <button (click)="applyWallpaper(selectedWallpaper, 2)">
+      {{ t('HOME.APPLY_LOCK') || 'Aplicar Lock' }}
+    </button>
+    <button (click)="applyWallpaper(selectedWallpaper, 3)">
+      {{ t('HOME.APPLY_BOTH') || 'Aplicar Ambos' }}
+    </button>
+    <button (click)="deleteWallpaper(selectedWallpaper)">
+      {{ t('HOME.DELETE') || 'Eliminar' }}
+    </button>
+    <button (click)="closeSelection()">
+      {{ t('HOME.CANCEL') || 'Cancelar' }}
+    </button>
+  </div>
+</ion-content>

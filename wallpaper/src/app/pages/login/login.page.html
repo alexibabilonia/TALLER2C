@@ -1,0 +1,88 @@
+<ion-content class="login-bg">
+  <ion-grid fixed>
+    <ion-row
+      class="ion-justify-content-center ion-align-items-center"
+      style="min-height: 100vh;"
+    >
+      <ion-col size="12" size-sm="8" size-md="6" size-lg="4">
+        <!-- Botones de idioma -->
+        <div class="language-buttons">
+          <button
+            class="flag-btn"
+            [class.active]="currentLang === 'en'"
+            (click)="setLanguage('en')"
+          >
+            <img src="assets/flags/us.png" alt="English" />
+          </button>
+          <button
+            class="flag-btn"
+            [class.active]="currentLang === 'es'"
+            (click)="setLanguage('es')"
+          >
+            <img src="assets/flags/co.png" alt="Español" />
+          </button>
+          <p class="current-lang">
+            {{ t('LANGUAGE.CURRENT') || 'Idioma actual' }}:
+            {{ currentLang === 'en' ? 'English' : 'Español' }}
+          </p>
+        </div>
+
+        <!-- Card login -->
+        <ion-card class="login-card">
+          <ion-card-header>
+            <ion-card-title class="login-title">
+              {{ t('LOGIN.TITLE') || 'Bienvenido' }}
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <form (ngSubmit)="login()">
+              <ion-item class="input-item">
+                <ion-label position="floating">
+                  {{ t('LOGIN.EMAIL') || 'Correo electrónico' }}
+                </ion-label>
+                <ion-input
+                  type="email"
+                  [(ngModel)]="email"
+                  name="email"
+                  required
+                ></ion-input>
+              </ion-item>
+
+              <ion-item class="input-item">
+                <ion-label position="floating">
+                  {{ t('LOGIN.PASSWORD') || 'Contraseña' }}
+                </ion-label>
+                <ion-input
+                  type="password"
+                  [(ngModel)]="password"
+                  name="password"
+                  required
+                ></ion-input>
+              </ion-item>
+
+              <ion-button expand="block" type="submit" class="btn-main">
+                {{ t('LOGIN.SUBMIT') || 'Iniciar Sesión' }}
+              </ion-button>
+
+              <ion-button
+                expand="block"
+                fill="outline"
+                routerLink="/register"
+                class="btn-main-outline"
+              >
+                {{ t('LOGIN.REGISTER') || 'Registrarse' }}
+              </ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Spinner centrado -->
+        <div *ngIf="isLoading" class="spinner-overlay">
+          <ion-spinner name="crescent"></ion-spinner>
+          <p>{{ t('LOADING.TEXT') || 'Cargando...' }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
